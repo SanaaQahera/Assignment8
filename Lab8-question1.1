@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+struct node{
+	int data;
+	node*next;
+};
+class stack{
+	private:
+	node *top;
+	public:
+	stack(){
+		top = NULL;
+	}
+	void push(int value){
+		node*ptr = new node;
+		ptr->data = value;
+		ptr->next = NULL;
+		if(top != NULL)
+		ptr->next = top;
+		top = ptr;
+		cout<<"New node has been inserted into stack\n";
+		}
+		void pop(){
+			node *temp = new node;
+			if(top == NULL)
+			cout<<"Stack is empty\n";
+			temp = top;
+			top = top->next;
+			delete temp;
+		}
+		void display(){
+			node *ptr = top;
+			while(ptr!=NULL){
+				cout<<ptr->data<<endl;
+				ptr = ptr->next;
+			}
+			cout<<"NULL";
+		}
+};
+int main(){
+	stack ob;
+	int i,a = 0;
+	while(i != 4){
+	cout<<"For push enter 1, For pop enter 2, for display enter 3, for exit enter 4\n";
+	cin>>i;
+	if(i == 1){
+		cout<<"Enter value of node\n";
+		cin>>a;
+		ob.push(a);
+		}
+		if(i == 2){
+			ob.pop();
+		}
+		if(i == 3){
+			cout<<"The items in the stack are:\n";
+			ob.display();
+		}
+}
+	
+}
